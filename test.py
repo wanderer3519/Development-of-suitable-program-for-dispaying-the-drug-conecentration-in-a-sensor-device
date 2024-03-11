@@ -6,6 +6,8 @@ import pandas as pd
     
     Here, pandas, a popular python library is used to read inputs from an excel sheet.
     After reading the input, it also gets the data specified in the coloumns to a hashmap.
+
+    As an exercise, I have calculated the averages of the data present in specific coloums of the sheet.
 '''
 
 df = 0 # random init to avoid errors

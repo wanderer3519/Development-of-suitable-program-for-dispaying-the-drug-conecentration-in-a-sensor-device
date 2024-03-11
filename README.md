@@ -5,3 +5,6 @@ This is the github repository for the Open Ended Lab Project (OELP) titled Devel
     a. Mr. Bhogaraju Shanmukha Sri Krishna
     b. Mr. Darla Manohar
 3. This is done in the OELP category at Indian Institute of Technology, Palakkad.
+
+Progress made:
+1. On 12th March 2024, Successfully read the input from an excel file into a python program.
