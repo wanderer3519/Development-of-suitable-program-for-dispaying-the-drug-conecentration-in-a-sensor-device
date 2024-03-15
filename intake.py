@@ -33,6 +33,11 @@ def read_input(xlsheet: str) -> dict[str, list]:
     return input_data
 
 
+'''
+    Get a value of current for a given time input.
+    This one has two styles of implementation.
+    Any one of the styles discussed below will do fine.
+'''
 def current(xlsheet: str, time: int) -> int:
     ''' One type of implementation '''
     
