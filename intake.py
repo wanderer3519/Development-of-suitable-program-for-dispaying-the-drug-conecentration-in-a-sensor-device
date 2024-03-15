@@ -9,26 +9,43 @@ import pandas as pd
 
     As an exercise, I have calculated the averages of the data present in specific coloums of the sheet.
 '''
+# xlsheet = '../Test_input.xlsx'
 
-df = 0 # random init to avoid errors
-df = pd.read_excel('../Test_input.xlsx') # reads the entire sheet (by default the first sheet)
+def read_input(xlsheet: str) -> dict[str, list]:
+    df = 0 # random init to avoid errors
+    df = pd.read_excel(xlsheet) # reads the entire sheet (by default the first sheet)
+
+    ''' prints the entire sheet '''
+    # print(df) 
+
+    ''' prints the coloumns '''
+    # print(df.columns.ravel()) 
+
+    ''' gets a list representation of the elements in the specified coloumn '''
+    # print(df['population'].tolist())
+
+    input_data: dict[str, list] = {}
+
+    # converting xlsheet into a hashmap
+    for col_name in df.columns.ravel():
+        input_data[col_name] = df[col_name].tolist()
+
+    return input_data
 
 
-''' prints the entire sheet '''
-# print(df) 
+def current(xlsheet: str, time: int) -> int:
+    ''' One type of implementation '''
+    
+    temp: dict[str, list] = read_input(xlsheet)
+    time_list: list[int] = temp['Time(s)']
+    current_list: list[float] = temp['Current(mA)']
 
-''' prints the coloumns '''
-# print(df.columns.ravel()) 
+    index: int = time_list.index(time)  
+    retval: int = current_list[index]
 
-''' gets a list representation of the elements in the specified coloumn '''
-# print(df['population'].tolist())
+    ''' Or else, map each of the values in "Current(mA)" to "Time(s)" '''
+    
+    hashMap: dict[float, int] = {time_list[i] : current_list[i] for i in range(len(time_list))}
+    retval: int = hashMap[time]
 
-input_data = {}
-
-for col_name in df.columns.ravel():
-    input_data[col_name] = df[col_name].tolist()
-
-print(input_data)
-
-
-# print(input_data)
+    return retval

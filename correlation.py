@@ -7,21 +7,21 @@
     It is of the form 
     y = m * x + c
     where 
-        m is the slope of the graph
-        c is the y intercept of the graph
+        m is the SLOPE of the graph
+        c is the y INTERCEPT of the graph
 
     This equation is calculated by taking certain (x,y) values and performing linear regression on them.
 '''
 
-slope = 0.385
-intercept = 0.445
+SLOPE = 1.385
+INTERCEPT = 0.0234
 
-def y(x):
-    y = slope * x + intercept
+def current(conc: int) -> int:
+    y = SLOPE * conc + INTERCEPT
     return y
 
-def x(y):
-    x = (y - intercept) / slope
+def conc(current: int) -> int:
+    x = (current - INTERCEPT) / SLOPE
     return x
 
 '''
@@ -35,4 +35,3 @@ def x(y):
 
     We only need to obtain input current from the spreadsheet.
 '''
-import intake
