@@ -30,8 +30,5 @@ for col_name in df.columns.ravel():
 
 print(input_data)
 
-''' calculating the average of each coloumn as an exercise '''
-
-
 
 # print(input_data)
