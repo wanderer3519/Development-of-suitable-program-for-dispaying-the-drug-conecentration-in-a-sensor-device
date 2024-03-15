@@ -11,7 +11,7 @@ import pandas as pd
 '''
 
 df = 0 # random init to avoid errors
-df = pd.read_excel('../Cities_Probability(1).xlsx') # reads the entire sheet (by default the first sheet)
+df = pd.read_excel('../Test_input.xlsx') # reads the entire sheet (by default the first sheet)
 
 
 ''' prints the entire sheet '''
@@ -24,21 +24,11 @@ df = pd.read_excel('../Cities_Probability(1).xlsx') # reads the entire sheet (by
 # print(df['population'].tolist())
 
 input_data = {}
-avg_values = {}
-for col_name in df.columns.ravel()[1:]:
+
+for col_name in df.columns.ravel():
     input_data[col_name] = df[col_name].tolist()
-    
-    # initializing each value in avg_values
-    avg_values[col_name] = 0
 
-numeric = list(input_data.keys())[1:]
-
-for col_name in numeric:
-    for i in input_data[col_name]:
-        avg_values[col_name] += int(i)
-    avg_values[col_name] = avg_values[col_name] / len(input_data[col_name])
-
-print(avg_values.values())
+print(input_data)
 
 ''' calculating the average of each coloumn as an exercise '''
 
