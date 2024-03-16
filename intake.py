@@ -9,7 +9,7 @@ import pandas as pd
 
     As an exercise, I have calculated the averages of the data present in specific coloums of the sheet.
 '''
-# xlsheet = '../Test_input.xlsx'
+# xlsheet = './Test_input.xlsx'
 
 def read_input(xlsheet: str) -> dict[str, list]:
     df = 0 # random init to avoid errors
@@ -38,7 +38,7 @@ def read_input(xlsheet: str) -> dict[str, list]:
     This one has two styles of implementation.
     Any one of the styles discussed below will do fine.
 '''
-def current(xlsheet: str, time: int) -> int:
+def current(xlsheet: str, time: int) -> float:
     ''' One type of implementation '''
     
     temp: dict[str, list] = read_input(xlsheet)
@@ -46,11 +46,11 @@ def current(xlsheet: str, time: int) -> int:
     current_list: list[float] = temp['Current(mA)']
 
     index: int = time_list.index(time)  
-    retval: int = current_list[index]
+    retval: float = current_list[index]
 
     ''' Or else, map each of the values in "Current(mA)" to "Time(s)" '''
     
-    hashMap: dict[float, int] = {time_list[i] : current_list[i] for i in range(len(time_list))}
-    retval: int = hashMap[time]
+    hashMap: dict[int, float] = {time_list[i] : current_list[i] for i in range(len(time_list))}
+    retval: float = hashMap[time]
 
     return retval

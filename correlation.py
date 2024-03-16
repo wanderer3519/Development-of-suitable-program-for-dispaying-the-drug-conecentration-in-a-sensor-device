@@ -13,15 +13,15 @@
     This equation is calculated by taking certain (x,y) values and performing linear regression on them.
 '''
 
-SLOPE = 1.385
-INTERCEPT = 0.0034
+SLOPE: float = 1.385
+INTERCEPT: float = 0.0034
 
-def current(conc: int) -> int:
-    y = SLOPE * conc + INTERCEPT
+def current(conc: float) -> float:
+    y: float = SLOPE * conc + INTERCEPT
     return y
 
-def conc(current: int) -> int:
-    x = (current - INTERCEPT) / SLOPE
+def conc(current: float) -> float:
+    x: float = (current - INTERCEPT) / SLOPE
     return x
 
 '''
