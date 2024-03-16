@@ -5,7 +5,7 @@ import correlation as cr
 if __name__ == '__main__':
     
     # added a custom test input
-    sheet = '../Test_input.xlsx'
+    sheet = './Test_input.xlsx'
 
     # reading input into program
     map = intk.read_input(xlsheet = sheet)
