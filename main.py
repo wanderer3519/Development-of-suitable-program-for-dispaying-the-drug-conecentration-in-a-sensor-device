@@ -25,7 +25,7 @@ if __name__ == '__main__':
         conc = cr.conc(current)
 
     # prints the result to output
-        print('The required conc is given by %.5f units' % (conc))
+        print('The required conc is given by %.5f M' % (conc))
     
     # if input is not valid, prints an error message
     except IndexError:

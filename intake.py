@@ -39,16 +39,18 @@ def read_input(xlsheet: str) -> dict[str, list]:
     Any one of the styles discussed below will do fine.
 '''
 def current(xlsheet: str, time: int) -> float:
-    ''' One type of implementation '''
     
     temp: dict[str, list] = read_input(xlsheet)
     time_list: list[int] = temp['Time(s)']
     current_list: list[float] = temp['Current(mA)']
 
-    index: int = time_list.index(time)  
-    retval: float = current_list[index]
+    ''' One type of implementation '''
+    '''
+        index: int = time_list.index(time)  
+        retval: float = current_list[index]
+    '''
 
-    ''' Or else, map each of the values in "Current(mA)" to "Time(s)" '''
+    ''' Or else, map each of the values in "Time(s)" to "Current(mA)" '''
     
     hashMap: dict[int, float] = {time_list[i] : current_list[i] for i in range(len(time_list))}
     retval: float = hashMap[time]
