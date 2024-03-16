@@ -14,7 +14,7 @@
 '''
 
 SLOPE = 1.385
-INTERCEPT = 0.0234
+INTERCEPT = 0.0034
 
 def current(conc: int) -> int:
     y = SLOPE * conc + INTERCEPT

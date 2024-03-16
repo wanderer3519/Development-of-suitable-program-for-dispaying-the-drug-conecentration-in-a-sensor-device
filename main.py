@@ -13,13 +13,20 @@ if __name__ == '__main__':
     times = map['Time(s)']
 
     # giving a random time as input to get concentration
-    time = times[3]
+    inNum = int(input('Enter a random time index: '))
+   
+    # gets current for the given time input if valid
+    try:
+        time = times[inNum]
 
-    # gets current for the given time input
-    current = intk.current(sheet, time)
+        current = intk.current(sheet, time)
 
     # gets the concentration for the desired time
-    conc = cr.conc(current)
+        conc = cr.conc(current)
 
     # prints the result to output
-    print('The required conc is given by %.2f units' % (conc))
+        print('The required conc is given by %.5f units' % (conc))
+    
+    # if input is not valid, prints an error message
+    except IndexError:
+        print("Sorry, index is out of range. Please enter a valid index between 0 and %d." % (len(times) - 1))
