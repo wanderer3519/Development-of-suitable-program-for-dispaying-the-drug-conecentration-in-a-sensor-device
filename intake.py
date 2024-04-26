@@ -9,9 +9,9 @@ import pandas as pd
 
     As an exercise, I have calculated the averages of the data present in specific coloums of the sheet.
 '''
-# xlsheet = './Test_input.xlsx'
+xlsheet = './Test_input.xlsx'
 
-def read_input(xlsheet: str) -> dict[str, list]:
+def read_input(xlsheet: str):
     df = 0 # random init to avoid errors
     df = pd.read_excel(xlsheet) # reads the entire sheet (by default the first sheet)
 
@@ -56,3 +56,48 @@ def current(xlsheet: str, time: int) -> float:
     retval: float = hashMap[time]
 
     return retval
+
+def voltage_current(xlsheet: str, out_file: str):
+    data = read_input(xlsheet=xlsheet)
+    data.pop("Time(s)")
+    
+    # Create a DataFrame
+    df = pd.DataFrame(data)
+    
+    # Write DataFrame to Excel
+    df.to_excel(out_file, index=False)
+    
+    print("Data has been written to", out_file)
+
+# sheet = './Test_input.xlsx'
+# outfile = "./test.xlsx"
+# voltage_current(sheet, outfile)
+
+def avg_current(xlsheet: str) -> int:
+    data = read_input(xlsheet=xlsheet)
+    currents = data['Current(mA)']
+    len_curr = len(currents)
+    sum_curr = sum(currents)
+
+    avg_curr = sum_curr / len_curr
+    avg_curr = round(avg_curr, 3)
+    return avg_curr
+
+# sheet = './Test_input.xlsx'
+# avg_curr = avg_current(sheet)
+# print(avg_curr)
+
+
+    
+
+'''
+dict = {#i : #i for i in range(len(current))}
+
+sum = 0
+i = 0
+for key in dict:
+    if(dict[key] == v):
+       sum += key
+        i += 1
+avgSum = sum / i  
+'''

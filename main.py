@@ -10,10 +10,10 @@ if __name__ == '__main__':
     # reading input into program
     map = intk.read_input(xlsheet = sheet)
     currents = map['Current(mA)']
-    times = map['Time(s)']
-
+    times = map['Time(s)'] # Add voltage(v)
+    volate = map["Voltage(V)"] # #######################
     # giving a random time as input to get concentration
-    inNum = int(input('Enter a random time index: '))
+    inNum = int(input('Enter a random time index: ')) #voltage petalli 
    
     # gets current for the given time input if valid
     try:
