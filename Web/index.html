@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Styled Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        #container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p#output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to the concentration display unit!</h1>
+        <p>The value of average current is: <span id="databox"></span> A</p>
+        <br>
+        <label for="Slope">Slope:</label>
+        <input type="text" id="Slope">
+        <br>
+        <label for="Intercept">Intercept:</label>
+        <input type="text" id="Intercept">
+        <br><br>
+        <button id="mySubmit" onclick="myTest()">Submit</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        let curr;
+        let slope = 0;
+        let intercept = 0;
+        fetch('http://127.0.0.1:5000/intake').then(r => r.text()).then(val => {
+            document.querySelector('#databox').innerHTML = val;
+            curr = val;
+        });
+
+        // Fetch slope and intercept
+        fetch('http://127.0.0.1:5000/slope_intercept')
+            .then(response => response.json())
+            .then(data => {
+                slope = data.slope;
+                intercept = data.intercept;
+
+                // Update input fields with slope and intercept
+                document.getElementById('Slope').value = slope.toFixed(2);
+                document.getElementById('Intercept').value = intercept.toFixed(2);
+            });
+
+        function myTest() {
+            // let slope = parseFloat(document.getElementById('Slope').value);
+            // let intercept = parseFloat(document.getElementById('Intercept').value);
+            let message = document.getElementById('output');
+
+            if (isNaN(slope) || isNaN(intercept)) {
+                message.innerHTML = 'Please enter valid numbers for Slope and Intercept.';
+                return;
+            }
+
+            let conc = (curr - intercept) / slope;
+            message.innerHTML = 'The final value of concentration is ' + conc.toFixed(2) + ' M';
+        }
+    </script>
+</body>
+</html>

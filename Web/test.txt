@@ -1,0 +1,15 @@
+problem statemtnt
+
+    1 glucometer(potentiostat) - takes a current reading and converts to concentrtion
+
+    issue: will only work with pre set calibration.
+
+    2 ch instrument: labs
+
+    issue input is graph, the sencond software to analyze the graph, to calc slope and intercept
+
+Solution :
+     an integration of the above.
+     1. analyze caliberation plot for cal slope and y intercept
+     2. takes reading of current and calculate the conocetration
+     
