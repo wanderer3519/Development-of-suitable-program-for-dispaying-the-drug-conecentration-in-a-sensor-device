@@ -57,27 +57,39 @@ def current(xlsheet: str, time: int) -> float:
 
     return retval
 
-def voltage_current(xlsheet: str, out_file: str):
-    data = read_input(xlsheet=xlsheet)
-    data.pop("Time(s)")
+# def voltage_current(xlsheet: str, out_file: str):
+#     data = read_input(xlsheet=xlsheet)
+#     data.pop("Time(s)")
     
-    # Create a DataFrame
-    df = pd.DataFrame(data)
+#     # Create a DataFrame
+#     df = pd.DataFrame(data)
     
-    # Write DataFrame to Excel
-    df.to_excel(out_file, index=False)
+#     # Write DataFrame to Excel
+#     df.to_excel(out_file, index=False)
     
-    print("Data has been written to", out_file)
+#     print("Data has been written to", out_file)
 
 # sheet = './Test_input.xlsx'
 # outfile = "./test.xlsx"
 # voltage_current(sheet, outfile)
 
-def avg_current(xlsheet: str) -> int:
+def avg_current(xlsheet: str, voltage) -> float:
+    i = 0
     data = read_input(xlsheet=xlsheet)
     currents = data['Current(mA)']
-    len_curr = len(currents)
-    sum_curr = sum(currents)
+    voltages = data['Voltage(V)']
+
+    sum_curr = 0
+    len_curr = 0
+    i = voltages.index(voltage)
+
+    while(voltages[i] == voltage):
+        sum_curr += currents[i]
+        len_curr += 1
+        i += 1
+
+    # len_curr = len(currents)
+    # sum_curr = sum(currents)
 
     avg_curr = sum_curr / len_curr
     avg_curr = round(avg_curr, 3)
@@ -101,3 +113,7 @@ for key in dict:
         i += 1
 avgSum = sum / i  
 '''
+# print(read_input(xlsheet))
+inputData = read_input(xlsheet)
+avgCurr = avg_current(xlsheet, 66)
+# print(avgCurr)
