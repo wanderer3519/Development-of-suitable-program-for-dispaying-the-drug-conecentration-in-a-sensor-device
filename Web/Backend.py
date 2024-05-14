@@ -20,8 +20,6 @@ def get_concentration():
     concentration = calculate_concentration('./Book1.xlsx', 'conc', 'current') 
 
     return 
-    
-    return str(concentration)
 
 @app.route('/intake')
 def intake_route():
