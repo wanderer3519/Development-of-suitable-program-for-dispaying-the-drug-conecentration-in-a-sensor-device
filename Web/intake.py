@@ -4,10 +4,7 @@ from scipy.stats import linregress
 
 app = Flask(__name__)
 
-'''
-    All the codes used in this file can be found at the following webpage
-    https://www.digitalocean.com/community/tutorials/pandas-read_excel-reading-excel-file-in-python
-    
+''' 
     Here, pandas, a popular python library is used to read inputs from an excel sheet.
     After reading the input, it also gets the data specified in the coloumns to a hashmap.
 
@@ -61,21 +58,6 @@ def current(xlsheet: str, time: int) -> float:
 
     return retval
 
-# def voltage_current(xlsheet: str, out_file: str):
-#     data = read_input(xlsheet=xlsheet)
-#     data.pop("Time(s)")
-    
-#     # Create a DataFrame
-#     df = pd.DataFrame(data)
-    
-#     # Write DataFrame to Excel
-#     df.to_excel(out_file, index=False)
-    
-#     print("Data has been written to", out_file)
-
-# sheet = './Test_input.xlsx'
-# outfile = "./test.xlsx"
-# voltage_current(sheet, outfile)
 
 def avg_current(xlsheet: str, voltage) -> float:
     i = 0
@@ -91,9 +73,6 @@ def avg_current(xlsheet: str, voltage) -> float:
         sum_curr += currents[i]
         len_curr += 1
         i += 1
-
-    # len_curr = len(currents)
-    # sum_curr = sum(currents)
 
     avg_curr = sum_curr / len_curr
     avg_curr = round(avg_curr, 3)
