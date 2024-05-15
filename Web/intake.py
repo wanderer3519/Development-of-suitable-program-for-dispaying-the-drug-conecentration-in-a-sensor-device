@@ -104,6 +104,21 @@ def avg_current(xlsheet: str, voltage) -> float:
 # print(avg_curr)
 
 
+'''
+    Here, we move on to calibration. We are given another xlsx of calibration and we are asked to get slope and intercept.
+    Here, we use scipy to calculate this. 'linregress' function from scipy is used to perform linear regression on the data
+    We in turn, get back the slope and y-intercpt as follows
+
+    y = ax + b
+    Where a is the slope and b is the intercept. 
+    These two are calculated by linregress function
+    
+    Let sum() denote the summation of all values of that input
+    Let n be number of data items
+    
+    a = (sum(y) * sum(x ** 2) - sum(x) * sum(x * y)) / (sum(x ** 2) - (sum(x)) ** 2)
+    b = (n * sum(x * y) - sum(x) * sum(y)) / (n * sum(x ** 2) - (sum(x)) ** 2) 
+'''
 def calculate_slope_and_intercept(xlsheet: str, x_column: str, y_column: str) -> tuple:
 
     data = read_input(xlsheet)
@@ -115,6 +130,12 @@ def calculate_slope_and_intercept(xlsheet: str, x_column: str, y_column: str) ->
 
     return slope, intercept
     
+'''
+    After knowing slope and intercept, it is very easy to calculate the concentration. We just map the average current to concentration on the graph
+
+    current = slope * concentration + y-intercept
+    concentration = (current - y-intercept) / slope 
+'''
 def calculate_concentration(xlsheet: str, x_column: str, y_column: str) -> tuple:
 
     data = read_input(xlsheet)
@@ -129,17 +150,7 @@ def calculate_concentration(xlsheet: str, x_column: str, y_column: str) -> tuple
 
     conc = (curr - intercept) / slope
     return conc
-'''
-dict = {#i : #i for i in range(len(current))}
 
-sum = 0
-i = 0
-for key in dict:
-    if(dict[key] == v):
-       sum += key
-        i += 1
-avgSum = sum / i  
-'''
 # print(read_input(xlsheet))
 inputData = read_input(xlsheet)
 avgCurr = avg_current(xlsheet, 66)
