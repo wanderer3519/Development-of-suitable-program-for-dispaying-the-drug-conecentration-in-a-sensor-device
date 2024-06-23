@@ -12,6 +12,9 @@ Progress made:
 3. On 11th May 2024, Successfully created a sample webpage and used it to calculate concentration
 4. On 14th May 2024, Successfully used the calibration and readings to output the concentration
 
+Naviagte to the branch "final" for the project. The entire work for the project is done there.
+After navigating to final and cloning, follow the next instructions to run the program. 
+
 RUNNING THE INTERFACE:
 In order to run the interface, the following command is to be executed (on Linux)
 $ flask --app Backend run --debug
@@ -19,7 +22,7 @@ $ flask --app Backend run --debug
 After running click on the IP address
 http://127.0.0.1:5000
 
-This is a development server.
+This is a development server. Click on the corresponding buttons to find the final concentration value.
 
 Prerequisites:
 

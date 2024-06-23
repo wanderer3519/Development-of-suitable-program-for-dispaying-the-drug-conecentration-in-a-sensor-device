@@ -1,4 +1,8 @@
 import pandas as pd
+from flask import Flask
+from scipy.stats import linregress
+
+app = Flask(__name__)
 
 '''
     All the codes used in this file can be found at the following webpage
@@ -100,8 +104,31 @@ def avg_current(xlsheet: str, voltage) -> float:
 # print(avg_curr)
 
 
-    
+def calculate_slope_and_intercept(xlsheet: str, x_column: str, y_column: str) -> tuple:
 
+    data = read_input(xlsheet)
+
+    x_values = data[x_column]
+    y_values = data[y_column]
+
+    slope, intercept, r_value, p_value, std_err = linregress(x_values, y_values)
+
+    return slope, intercept
+    
+def calculate_concentration(xlsheet: str, x_column: str, y_column: str) -> tuple:
+
+    data = read_input(xlsheet)
+    # curr = data['current']
+
+    x_values = data[x_column]
+    y_values = data[y_column]
+
+    slope, intercept, r_value, p_value, std_err = linregress(x_values, y_values)
+
+    curr = avg_current('./Book1.xlsx', 'conc')
+
+    conc = (curr - intercept) / slope
+    return conc
 '''
 dict = {#i : #i for i in range(len(current))}
 
