@@ -17,9 +17,7 @@ def index():
 
 @app.route('/concentration')
 def get_concentration():
-    concentration = calculate_concentration('./Book1.xlsx', 'conc', 'current') 
-
-    return 
+    concentration = calculate_concentration('./Calibration.xlsx', 'conc', 'current') 
     
     return str(concentration)
 
@@ -29,7 +27,7 @@ def intake_route():
 
 @app.route('/slope_intercept')
 def slope_intercept():
-    slope, intercept = calculate_slope_and_intercept('./Book1.xlsx', 'conc', 'current')
+    slope, intercept = calculate_slope_and_intercept('./Calibration.xlsx', 'conc', 'current')
     return jsonify({'slope': slope, 'intercept': intercept})
 
 

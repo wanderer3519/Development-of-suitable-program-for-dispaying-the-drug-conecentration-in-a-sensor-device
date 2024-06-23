@@ -13,7 +13,7 @@ app = Flask(__name__)
 
     As an exercise, I have calculated the averages of the data present in specific coloums of the sheet.
 '''
-xlsheet = './Test_input.xlsx'
+xlsheet = './Readings.xlsx'
 
 def read_input(xlsheet: str):
     df = 0 # random init to avoid errors
