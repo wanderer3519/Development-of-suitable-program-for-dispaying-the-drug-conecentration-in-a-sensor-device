@@ -31,3 +31,6 @@ $ pip install python3
 
 Install flask
 $ pip install flask
+
+Report:
+https://docs.google.com/document/d/1yT6cX0u4wun8VM36kP_ys7pIrXvZQ60e15u1oxz8oJA/edit?usp=drive_link
